@@ -1,11 +1,11 @@
 <div align="center">
 
 <!-- Hero Banner -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,25,45&height=220&section=header&text=MRZROOT-OS-3&fontSize=40&fontColor=ffffff&fontAlignY=38&desc=%E2%9A%A1%20System%20Metrics%20Daemon%20%26%20Hardware%20Telemetry%20Engine&descFontSize=16&descAlignY=58&descAlign=50" alt="MRZROOT OS 3 Banner" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,25,45&height=200&section=header&text=MRZROOT-OS-3&fontSize=38&fontColor=ffffff&fontAlignY=38&desc=%E2%9A%A1%20Simple%2C%20Fast%20System%20%26%20Hardware%20Info%20Tool%20for%20Python&descFontSize=16&descAlignY=58&descAlign=50" alt="MRZROOT OS 3 Banner" width="100%" />
 
 <!-- Animated Typist -->
 <a href="https://github.com/mrzroot/mrzroot-os-3">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=18&duration=2800&pause=1000&color=00D2FF&center=true&vCenter=true&width=650&lines=Real-Time+Hardware+Telemetry+%26+Daemon;Lightweight+System+Health+Inspector;Pure+Python+%7C+Zero+Overhead+%7C+Cross-Platform" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=18&duration=2800&pause=1000&color=00D2FF&center=true&vCenter=true&width=650&lines=Quick+System+%26+Hardware+Diagnostics+in+Python;Clean%2C+Lightweight+%26+Zero+Extra+Packages;Beginner-Friendly+Open+Source+Utility" alt="Typing SVG" />
 </a>
 
 <br />
@@ -35,12 +35,12 @@
 
 ### 📖 Overview
 
-**MRZROOT-OS-3** is a high-frequency system telemetry daemon and hardware diagnostics engine for Python. Built with pure standard libraries, it captures CPU metrics, memory stats, disk I/O, and platform runtime health with sub-millisecond execution latencies.
+**MRZROOT-OS-3** is a simple, lightweight system and hardware information tool written in pure Python. It quickly inspects your OS, CPU, memory, and environment details without requiring any third-party packages or complex setup.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  ⚡ MRZROOT-OS-3 Telemetry Daemon                          │
-│  [Core] Real-time • Low Latency • Zero Dependencies • Lean │
+│  ⚡ MRZROOT-OS-3 System & Hardware Inspector               │
+│  [Core] Simple • Fast • Lightweight • Zero Dependencies     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -48,10 +48,10 @@
 
 ### ✨ Key Features
 
-- ⚡ **Zero External Dependencies**: Pure standard library with no C-binding compilation required.
-- 📈 **Real-Time Telemetry**: Immediate capture of CPU topology, memory distributions, and runtime health.
-- 🛡️ **Sub-Millisecond Overhead**: Designed for background execution without impacting primary processes.
-- 🌐 **Universal Platform Support**: Runs identically on Linux, Windows, and macOS.
+- ⚡ **Zero Dependencies**: Works out-of-the-box using only Python standard library.
+- 🔍 **Instant System Diagnostics**: Quickly view OS, CPU cores, Python version, and execution stats.
+- 💻 **Cross-Platform**: Works smoothly on Windows, Linux, and macOS.
+- 📖 **Clean & Beginner-Friendly Code**: Easy to read, modify, and learn from.
 
 ---
 
