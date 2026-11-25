@@ -1,45 +1,39 @@
-"""
-=============================================================================
-MRZROOT-OS-3: Real-Time Hardware Telemetry & System Daemon
-=============================================================================
-Pure Python (Zero external dependencies, sub-millisecond execution)
-=============================================================================
-"""
-
+"""Take one local system snapshot. Nothing is collected continuously or sent out."""
+import argparse
+import json
 import os
 import platform
 import sys
 import time
 
 
-def banner():
-    print(r"""
-\033[1;35m  __  __ _____ ______ _____   ____   ____ _______        ____   _____        ____  
- |  \/  |  __ \___  /  __ \ / __ \ / __ \__   __|      / __ \ / ____|      |___ \ 
- | \  / | |__) | / /| |__) | |  | | |  | | | | ______ | |  | | (___   ______  __) |
- | |\/| |  _  / / / |  _  /| |  | | |  | | | ||______| | |  | |\___ \ |______||__ < 
- | |  | | | \ \/ /__| | \ \| |__| | |__| | | |        | |__| |____) |        ___) |
- |_|  |_|_|  \_\_____|_|  \_\\____/ \____/  |_|         \____/|_____/        |____/ \033[0m
- \033[1;32m[+] Real-Time Hardware Telemetry Daemon [v2.4.0]\033[0m
-""")
+def collect_metrics(include_local_details=False):
+    snapshot = {
+        "system": platform.system(),
+        "release": platform.release(),
+        "architecture": platform.machine(),
+        "logical_cores": os.cpu_count(),
+        "python": platform.python_version(),
+        "monotonic_ns": time.monotonic_ns(),
+    }
+    if include_local_details:
+        snapshot.update(hostname=platform.node(), executable=sys.executable, pid=os.getpid())
+    return snapshot
 
 
-def collect_metrics():
-    print("\n📊 \033[1;33mHardware & Runtime Metrics Snapshot:\033[0m")
-    print(f"  • Host Machine     : {platform.node()} ({platform.system()} {platform.release()})")
-    print(f"  • CPU Architecture : {platform.machine()} (Logical Cores: {os.cpu_count()})")
-    print(f"  • Python Engine    : {sys.version.split()[0]} ({sys.executable})")
-    print(f"  • Process ID (PID) : {os.getpid()}")
-    print(f"  • Precision Clock  : {time.monotonic_ns()} ns")
-
-
-def main():
-    if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    banner()
-    collect_metrics()
-    print("\n✨ \033[1;32mTelemetry probe finished with 0 errors.\033[0m")
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--json", action="store_true", help="output a JSON object")
+    parser.add_argument("--include-local-details", action="store_true", help="also include hostname, executable, and PID")
+    args = parser.parse_args(argv)
+    snapshot = collect_metrics(args.include_local_details)
+    if args.json:
+        print(json.dumps(snapshot, sort_keys=True))
+    else:
+        for key, value in snapshot.items():
+            print(f"{key}: {value if value is not None else 'unknown'}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
